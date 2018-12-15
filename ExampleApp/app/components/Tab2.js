@@ -1,7 +1,6 @@
 import axios from "axios";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { showToast } from "../util/toast";
 import { apiUrl } from "../config";
 
 export default class Tab2 extends React.Component {
@@ -14,7 +13,6 @@ export default class Tab2 extends React.Component {
     axios.get(apiUrl + "/todos").then(response => {
       const items = response.data.slice(0, 10);
       this.setState({ items, loading: false });
-      showToast("Data fetched");
     });
   }
 
