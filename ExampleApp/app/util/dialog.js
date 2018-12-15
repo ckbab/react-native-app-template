@@ -13,11 +13,11 @@ export const showAlert = async (options = {}) => {
 export const showConfirm = async (options = {}) => {
   return new Promise(resolve => {
     let { title, content, positiveText, negativeText } = options;
-    negativeText = negativeText || "Nej";
-    positiveText = positiveText || "Ja";
+    negativeText = negativeText || "No";
+    positiveText = positiveText || "Yes";
     Alert.alert(title, content, [
-      { text: negativeText, onPress: () => resolve(false) },
-      { text: positiveText, onPress: () => resolve(true) }
+      { text: positiveText, onPress: () => resolve(true) },
+      { text: negativeText, onPress: () => resolve(false) }
     ]);
   });
 };
