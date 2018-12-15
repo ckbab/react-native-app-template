@@ -1,7 +1,7 @@
 import axios from "axios";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { apiUrl } from "../config";
+import { apiUrl } from "../constants/config";
 
 export default class Tab2 extends React.Component {
   state = {

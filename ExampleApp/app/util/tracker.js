@@ -1,5 +1,5 @@
 import { Analytics, ScreenHit } from "expo-analytics";
-import { trackerId } from "../config";
+import { trackerId } from "../constants/config";
 
 export const tracker = (() => {
   const analytics = new Analytics(trackerId);
