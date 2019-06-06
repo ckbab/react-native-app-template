@@ -2,5 +2,8 @@
   "language.sv": "Svenska",
   "language.en": "English",
 
+  "app.message.error.title": "Something went wrong",
+  "app.message.error.subtitle": "Could not connect to the server",
+
   "hello": "Hello"
 }
