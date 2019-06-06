@@ -2,6 +2,7 @@ import { Platform } from "react-native";
 import { createBottomTabNavigator } from "react-navigation";
 import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
 import { primaryColor, fontColor } from "../constants/colors";
+import { tabbarHeight } from "../constants/styles";
 import Tab1 from "../components/Tab1";
 import Tab2 from "../components/Tab2";
 import Tab3 from "../components/Tab3";
@@ -20,6 +21,9 @@ const createTabNavigator =
 
 const iosOptions = {
   tabBarOptions: {
+    style: {
+      height: tabbarHeight
+    },
     showLabel: true,
     activeTintColor: activeColor,
     inactiveTintColor: inactiveColor,
