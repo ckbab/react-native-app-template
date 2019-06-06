@@ -1,11 +1,11 @@
 import { createDrawerNavigator } from "react-navigation";
-import Stack from "./Stack";
+import Switch from "./Switch";
 import Menu from "../components/Menu";
 
 const Drawer = createDrawerNavigator(
   {
     Main: {
-      screen: Stack
+      screen: Switch
     }
   },
   {

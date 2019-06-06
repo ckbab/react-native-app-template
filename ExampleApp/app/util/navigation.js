@@ -1,5 +1,6 @@
 import React from "react";
 import { Platform, StyleSheet, View } from "react-native";
+import { NavigationActions } from "react-navigation";
 import { primaryColor, backgroundColor } from "../constants/colors";
 import { shadow2 } from "../constants/shadows";
 import { CustomIcon, Icon, Text } from "../components/shared";
@@ -74,6 +75,15 @@ export const getDefaultHeaderOptions = navigation => {
       ...shadow
     }
   };
+};
+
+export const pushScreen = (navigation, routeName, params) => {
+  const navigateAction = NavigationActions.navigate({
+    routeName: routeName,
+    params: params,
+    key: routeName + JSON.stringify(params)
+  });
+  navigation.dispatch(navigateAction);
 };
 
 const styles = StyleSheet.create({

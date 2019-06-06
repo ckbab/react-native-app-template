@@ -5,5 +5,7 @@
   "app.message.error.title": "Något gick fel",
   "app.message.error.subtitle": "Kunde inte hitta server",
 
+  "loader.downloading": "Laddar ner senaste versionen...",
+
   "hello": "Hej"
 }
