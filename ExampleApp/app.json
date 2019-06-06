@@ -1,29 +1,29 @@
 {
   "expo": {
     "name": "ExampleApp",
-    "slug": "ExampleApp",
-    "privacy": "public",
-    "sdkVersion": "31.0.0",
-    "platforms": [
-      "ios",
-      "android"
-    ],
     "version": "1.0.0",
+    "slug": "example-app",
+    "privacy": "unlisted",
+    "sdkVersion": "31.0.0",
+    "platforms": ["ios", "android"],
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
     "updates": {
-      "fallbackToCacheTimeout": 0
+      "fallbackToCacheTimeout": 0,
+      "checkAutomatically": "ON_ERROR_RECOVERY"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
+    "android": {
+      "package": "com.example.app",
+      "icon": "./assets/android-icon.png"
+    },
     "ios": {
-      "supportsTablet": true
+      "bundleIdentifier": "com.example.app",
+      "icon": "./assets/ios-icon.png"
     }
   }
 }
