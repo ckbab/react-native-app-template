@@ -1,12 +1,12 @@
 import React from "react";
-import { StyleSheet, TextInput, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { connect } from "react-redux";
 import Stack from "../navigators/Stack";
 import { addItem } from "../store/items/itemsActions";
 import { setLanguage } from "../store/settings/settingsActions";
 import { getCount, getItems } from "../store/items/itemsSelector";
 import { localize } from "../util/localization";
-import { Button, FlatButton, Text } from "./shared";
+import { Button, FlatButton, Text, TextInput } from "./shared";
 
 class Tab1 extends React.Component {
   state = {
@@ -87,14 +87,13 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   },
   form: {
-    flexDirection: "row",
-    alignItems: "center",
     backgroundColor: "#eee",
     padding: 16
   },
   input: {
+    marginBottom: 8,
     height: 32,
-    width: 100,
+    width: 200,
     backgroundColor: "#fff",
     borderColor: "#ccc",
     borderWidth: 1

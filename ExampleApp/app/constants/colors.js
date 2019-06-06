@@ -1,4 +1,4 @@
-export const primaryColor = "#fc0";
-export const errorColor = "red";
-export const successColor = "green";
+export const primaryColor = "#1e90ff";
+export const errorColor = "#ff0000";
+export const successColor = "#008000";
 export const fontColor = "#333";

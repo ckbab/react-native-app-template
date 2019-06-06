@@ -10,7 +10,7 @@ const MenuButton = navigation => {
   const onPress = () => {
     openDrawer();
   };
-  return <ToolbarButton icon="list" onPress={onPress} />;
+  return <ToolbarButton icon="menu" onPress={onPress} />;
 };
 
 const Stack = createStackNavigator({
