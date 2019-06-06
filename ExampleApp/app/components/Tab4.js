@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import {
   calendarTime,
   formatDate,
@@ -7,6 +7,7 @@ import {
   relativeTime,
   smartDate
 } from "../util/date";
+import { FlatButton, Text } from "./shared";
 
 export default class Tab4 extends React.Component {
   state = {
@@ -28,7 +29,7 @@ export default class Tab4 extends React.Component {
           Smart date (2 hours ago):
           {smartDate(getNow().subtract(120, "minutes"), 1)}
         </Text>
-        <Button title="Force render" onPress={() => this.forceUpdate()} />
+        <FlatButton label="Force render" onPress={() => this.forceUpdate()} />
       </View>
     );
   }

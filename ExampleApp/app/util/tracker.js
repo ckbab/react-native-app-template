@@ -1,11 +1,16 @@
-import { Analytics, ScreenHit } from "expo-analytics";
-import { trackerId } from "../constants/config";
+import { Analytics, ScreenHit, Event } from "expo-analytics";
+import { trackingId } from "../constants/config";
 
-export const tracker = (() => {
-  const analytics = new Analytics(trackerId);
-  return {
-    trackScreenView: screen => {
-      analytics.hit(new ScreenHit(screen));
-    }
-  };
-})();
+const analytics = new Analytics(trackingId);
+
+export const trackScreenView = screen => {
+  if (!__DEV__) {
+    analytics.hit(new ScreenHit(screen));
+  }
+};
+
+export const trackEvent = (category, action, label, value) => {
+  if (!__DEV__) {
+    analytics.hit(new Event(category, action, label, value));
+  }
+};

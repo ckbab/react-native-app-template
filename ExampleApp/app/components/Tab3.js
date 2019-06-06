@@ -1,6 +1,7 @@
 import React from "react";
-import { Button, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { showAlert, showConfirm } from "../util/dialog";
+import { FlatButton } from "./shared";
 
 export default class Tab3 extends React.Component {
   _handleAlert = async () => {
@@ -21,8 +22,8 @@ export default class Tab3 extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Button title="Alert" onPress={this._handleAlert} />
-        <Button title="Confirm" onPress={this._handleConfirm} />
+        <FlatButton label="Alert" onPress={this._handleAlert} />
+        <FlatButton label="Confirm" onPress={this._handleConfirm} />
       </View>
     );
   }

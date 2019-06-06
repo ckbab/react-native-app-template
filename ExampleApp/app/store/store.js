@@ -3,7 +3,6 @@ import { createReactNavigationReduxMiddleware } from "react-navigation-redux-hel
 import reducers from "../store/reducers";
 
 const navigationMiddleware = createReactNavigationReduxMiddleware(
-  "root",
   state => state.nav
 );
 

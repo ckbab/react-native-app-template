@@ -15,7 +15,9 @@
     "setTimeout": true,
     "setInterval": true,
     "clearTimeout": true,
-    "clearInterval": true
+    "clearInterval": true,
+    "require": true,
+    "__DEV__": true
   },
   "env": {
     "es6": true

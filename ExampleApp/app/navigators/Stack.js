@@ -1,9 +1,8 @@
-import Icon from "@expo/vector-icons/FontAwesome";
 import React from "react";
-import { TouchableOpacity } from "react-native";
 import { createStackNavigator } from "react-navigation";
 import Stack1 from "../components/Stack1";
 import Stack2 from "../components/Stack2";
+import { ToolbarButton } from "../components/shared";
 import Tabs from "./Tabs";
 
 const MenuButton = navigation => {
@@ -11,11 +10,7 @@ const MenuButton = navigation => {
   const onPress = () => {
     openDrawer();
   };
-  return (
-    <TouchableOpacity onPress={onPress}>
-      <Icon name="bars" size={32} color="green" />
-    </TouchableOpacity>
-  );
+  return <ToolbarButton icon="list" onPress={onPress} />;
 };
 
 const Stack = createStackNavigator({
