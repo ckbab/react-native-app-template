@@ -4,6 +4,7 @@ import { Platform, StyleSheet, View } from "react-native";
 import { Provider } from "react-redux";
 import { persistStore } from "redux-persist";
 import FlashMessage from "react-native-flash-message";
+import { shadow4 } from "../../constants/shadows";
 import store from "../../store/store";
 import { getStatusBarHeight } from "../../util/screen";
 import { trackScreenView } from "../../util/tracker";
@@ -81,7 +82,8 @@ const styles = StyleSheet.create({
     flex: 1
   },
   flashContainer: {
-    paddingTop: Platform.select({ android: getStatusBarHeight(), ios: 0 })
+    paddingTop: Platform.select({ android: getStatusBarHeight(), ios: 0 }),
+    ...shadow4
   },
   flashTitle: {
     fontFamily: "Roboto-Bold",
