@@ -13,7 +13,7 @@ export default class Text extends Component {
     selectable: PropTypes.bool,
     numberOfLines: PropTypes.number,
     onPress: PropTypes.func,
-    style: PropTypes.any
+    style: PropTypes.any,
   };
 
   static defaultProps = {
@@ -25,7 +25,7 @@ export default class Text extends Component {
     selectable: false,
     numberOfLines: null,
     onPress: null,
-    style: {}
+    style: {},
   };
 
   _getFontSize = () => {
@@ -61,7 +61,7 @@ export default class Text extends Component {
       color,
       selectable,
       numberOfLines,
-      onPress
+      onPress,
     } = this.props;
     const fontSize = this._getFontSize();
     const fontFamily = this._getFontFamily();

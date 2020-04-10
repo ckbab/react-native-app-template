@@ -5,13 +5,13 @@ import {
   formatDate,
   getNow,
   relativeTime,
-  smartDate
+  smartDate,
 } from "../util/date";
 import { FlatButton, Text } from "./shared";
 
 export default class Tab4 extends React.Component {
   state = {
-    date: new Date()
+    date: new Date(),
   };
 
   render() {
@@ -40,6 +40,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
-    justifyContent: "center"
-  }
+    justifyContent: "center",
+  },
 });

@@ -7,11 +7,11 @@ import { Text } from "./shared";
 export default class Tab2 extends React.Component {
   state = {
     loading: true,
-    items: []
+    items: [],
   };
 
   componentDidMount() {
-    axios.get(apiUrl + "/todos").then(response => {
+    axios.get(apiUrl + "/todos").then((response) => {
       const items = response.data.slice(0, 10);
       this.setState({ items, loading: false });
     });
@@ -26,7 +26,7 @@ export default class Tab2 extends React.Component {
         ) : (
           <View>
             <Text>Total number of remote items: {items.length}</Text>
-            {items.map(item => (
+            {items.map((item) => (
               <Text key={item.id}>{item.title}</Text>
             ))}
           </View>
@@ -41,6 +41,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
-    justifyContent: "center"
-  }
+    justifyContent: "center",
+  },
 });

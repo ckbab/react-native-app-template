@@ -1,16 +1,16 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import { connect } from "react-redux";
-import Stack from "../navigators/Stack";
 import { addItem } from "../store/items/itemsActions";
 import { setLanguage } from "../store/settings/settingsActions";
 import { getCount, getItems } from "../store/items/itemsSelector";
 import { localize } from "../util/localization";
+import { pushScreen } from "../util/navigation";
 import { Button, FlatButton, Text, TextInput } from "./shared";
 
 class Tab1 extends React.Component {
   state = {
-    name: ""
+    name: "",
   };
 
   _addItem = () => {
@@ -20,7 +20,7 @@ class Tab1 extends React.Component {
     this.setState({ name: "" });
   };
 
-  _handleChangeText = value => {
+  _handleChangeText = (value) => {
     this.setState({ name: value });
   };
 
@@ -32,6 +32,11 @@ class Tab1 extends React.Component {
   _handleSetEnglish = () => {
     const { setLanguage } = this.props;
     setLanguage("en");
+  };
+
+  _handleOpenStack = () => {
+    const { navigation } = this.props;
+    pushScreen(navigation, "Stack1");
   };
 
   render() {
@@ -66,14 +71,7 @@ class Tab1 extends React.Component {
             disabled={name.length === 0}
           />
         </View>
-        <FlatButton
-          label="Open stack1"
-          onPress={() => {
-            this.props.navigation.dispatch(
-              Stack.router.getActionForPathAndParams("Stack1")
-            );
-          }}
-        />
+        <FlatButton label="Open stack1" onPress={this._handleOpenStack} />
       </View>
     );
   }
@@ -84,11 +82,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
   },
   form: {
     backgroundColor: "#eee",
-    padding: 16
+    padding: 16,
   },
   input: {
     marginBottom: 8,
@@ -96,26 +94,23 @@ const styles = StyleSheet.create({
     width: 200,
     backgroundColor: "#fff",
     borderColor: "#ccc",
-    borderWidth: 1
-  }
+    borderWidth: 1,
+  },
 });
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     count: getCount(state),
     specificItem: getCount(state, 2),
-    items: getItems(state)
+    items: getItems(state),
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    addItem: name => dispatch(addItem(name)),
-    setLanguage: language => dispatch(setLanguage(language))
+    addItem: (name) => dispatch(addItem(name)),
+    setLanguage: (language) => dispatch(setLanguage(language)),
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Tab1);
+export default connect(mapStateToProps, mapDispatchToProps)(Tab1);

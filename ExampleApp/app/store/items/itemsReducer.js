@@ -4,8 +4,8 @@ const initialState = {
   items: {
     0: "Zlatan",
     1: "Messi",
-    2: "Ronaldo"
-  }
+    2: "Ronaldo",
+  },
 };
 
 export default (state = initialState, action) => {
@@ -17,8 +17,8 @@ export default (state = initialState, action) => {
         ...state,
         items: {
           ...state.items,
-          [id]: name
-        }
+          [id]: name,
+        },
       };
     }
     default:

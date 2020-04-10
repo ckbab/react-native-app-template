@@ -13,7 +13,7 @@ export const getLanguage = () => {
   return ["en", "sv"].includes(language) ? language : "en";
 };
 
-export const localize = key => {
+export const localize = (key) => {
   const language = getLanguage();
   const label = getIn(availableLanguages, [language, key]);
   return label || key;

@@ -1,93 +1,64 @@
 import React from "react";
-import { Platform, StyleSheet, View } from "react-native";
-import { NavigationActions } from "react-navigation";
-import { primaryColor, backgroundColor } from "../constants/colors";
+import { StyleSheet } from "react-native";
+import { backgroundColor, fontColor, primaryColor } from "../constants/colors";
 import { shadow2 } from "../constants/shadows";
 import { CustomIcon, Icon, Text } from "../components/shared";
-import { headerHeight } from "../constants/styles";
-import { BackButton } from "../navigators/Components";
-import { getStatusBarHeight } from "./screen";
+import { BackButton, EmptyButton } from "../navigators/Components";
 
-export const getTabOptions = (title, icon, customIcon = false) => {
-  const IconComponent = customIcon ? CustomIcon : Icon;
-  const tabBarIcon = ({ tintColor }) => (
-    <IconComponent name={icon} size={20} color={tintColor} />
-  );
-  const iosLabel = ({ tintColor }) => (
-    <Text
-      color={tintColor}
-      size="small"
-      numberOfLines={1}
-      style={styles.iosTab}
-    >
-      {title}
-    </Text>
-  );
-  // Note: cannot set color of material tab in Tabs.js options
-  const androidLabel = (
-    <Text color={primaryColor} size="small" numberOfLines={1}>
-      {title}
-    </Text>
-  );
+export const getTabBarOptions = () => {
+  const backgroundColor = "#fff";
+  const activeColor = primaryColor;
+  const inactiveColor = fontColor;
   return {
-    title: { title },
-    tabBarIcon: tabBarIcon,
-    tabBarLabel: Platform.OS === "ios" ? iosLabel : androidLabel
+    activeTintColor: activeColor,
+    activeBackgroundColor: backgroundColor,
+    inactiveTintColor: inactiveColor,
+    inactiveBackgroundColor: backgroundColor,
   };
 };
 
-export const getStackOptions = navigation => {
+export const getTabItemOptions = (title, icon, customIcon = false) => {
+  const IconComponent = customIcon ? CustomIcon : Icon;
+  const tabBarIcon = ({ color }) => (
+    <IconComponent name={icon} size={20} color={color} />
+  );
+  const tabBarLabel = ({ color }) => (
+    <Text color={color} size="small" numberOfLines={1} style={styles.tab}>
+      {title}
+    </Text>
+  );
+  return { tabBarIcon, tabBarLabel };
+};
+
+export const getStackOptions = ({ navigation, route }) => {
+  const { isScrolled } = route.params || {};
+  const shadow = isScrolled ? shadow2 : null;
   return {
-    headerLeft: BackButton(navigation),
-    headerRight: <View />,
-    headerTintColor: primaryColor,
+    headerLeft: () => BackButton(navigation),
+    headerRight: () => EmptyButton(navigation),
     headerStyle: {
-      height: headerHeight,
       backgroundColor: backgroundColor,
-      borderBottomWidth: 0,
-      elevation: 0
+      elevation: 0,
+      ...shadow,
     },
+    headerTintColor: primaryColor,
+    headerTitleAlign: "center",
     headerTitleStyle: {
-      flex: 1,
-      marginHorizontal: 0,
       textAlign: "center",
       fontFamily: "Roboto-Bold",
       fontWeight: "400",
-      fontSize: 20
-    }
+      fontSize: 20,
+    },
   };
 };
 
-export const getDefaultHeaderOptions = navigation => {
-  const isScrolled = navigation.getParam("isScrolled");
-  const shadow = isScrolled ? shadow2 : null;
-  const extraHeight = Platform.select({
-    android: getStatusBarHeight(),
-    ios: 0
-  });
-  return {
-    headerStyle: {
-      height: headerHeight + extraHeight,
-      paddingTop: extraHeight,
-      backgroundColor: backgroundColor,
-      borderBottomWidth: 0,
-      elevation: 0,
-      ...shadow
-    }
-  };
-};
-
-export const pushScreen = (navigation, routeName, params) => {
-  const navigateAction = NavigationActions.navigate({
-    routeName: routeName,
-    params: params,
-    key: routeName + JSON.stringify(params)
-  });
-  navigation.dispatch(navigateAction);
+export const pushScreen = (navigation, name, params) => {
+  const key = name + JSON.stringify(params);
+  navigation.navigate({ name, key, params });
 };
 
 const styles = StyleSheet.create({
-  iosTab: {
-    marginBottom: 4
-  }
+  tab: {
+    marginBottom: 4,
+  },
 });

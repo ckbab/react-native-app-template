@@ -8,16 +8,16 @@ export const showMessage = (message, description) => {
     description,
     duration: 4000,
     color: "#fff",
-    backgroundColor: successColor
+    backgroundColor: successColor,
   });
 };
 
-export const showError = text => {
+export const showError = (text) => {
   showFlashMessage({
     message: localize("app.message.error.title"),
     description: text || localize("app.message.error.subtitle"),
     duration: 4000,
     color: "#fff",
-    backgroundColor: errorColor
+    backgroundColor: errorColor,
   });
 };

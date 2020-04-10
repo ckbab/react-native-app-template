@@ -11,8 +11,8 @@ class LanguageWrapper extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  language: getLanguage(state)
+const mapStateToProps = (state) => ({
+  language: getLanguage(state),
 });
 
 export default connect(mapStateToProps)(LanguageWrapper);

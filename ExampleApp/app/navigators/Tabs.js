@@ -1,77 +1,41 @@
-import { Platform } from "react-native";
-import { createBottomTabNavigator } from "react-navigation";
-import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
-import { primaryColor, fontColor } from "../constants/colors";
-import { tabbarHeight } from "../constants/styles";
+import React from "react";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Tab1 from "../components/Tab1";
 import Tab2 from "../components/Tab2";
 import Tab3 from "../components/Tab3";
 import Tab4 from "../components/Tab4";
 import { localize } from "../util/localization";
-import { getTabOptions } from "../util/navigation";
+import { getTabBarOptions, getTabItemOptions } from "../util/navigation";
 
-const backgroundColor = "#fff";
-const activeColor = primaryColor;
-const inactiveColor = fontColor;
+const TabNav = createBottomTabNavigator();
 
-const createTabNavigator =
-  Platform.OS === "ios"
-    ? createBottomTabNavigator
-    : createMaterialBottomTabNavigator;
-
-const iosOptions = {
-  tabBarOptions: {
-    style: {
-      height: tabbarHeight
-    },
-    showLabel: true,
-    activeTintColor: activeColor,
-    inactiveTintColor: inactiveColor,
-    inactiveBackgroundColor: backgroundColor,
-    activeBackgroundColor: backgroundColor
+export default class Tabs extends React.Component {
+  render() {
+    // Notice that "tabBarOptions" is called so an object is returned.
+    // This differs to e.g. "screenOptions" which takes a method.
+    return (
+      <TabNav.Navigator tabBarOptions={getTabBarOptions()}>
+        <TabNav.Screen
+          name="Tab1"
+          component={Tab1}
+          options={getTabItemOptions(localize("tab.1"), "contact")}
+        />
+        <TabNav.Screen
+          name="Tab2"
+          component={Tab2}
+          options={getTabItemOptions(localize("tab.2"), "airplane")}
+        />
+        <TabNav.Screen
+          name="Tab3"
+          component={Tab3}
+          options={getTabItemOptions(localize("tab.3"), "list")}
+        />
+        <TabNav.Screen
+          name="Tab4"
+          component={Tab4}
+          options={getTabItemOptions(localize("tab.4"), "beer")}
+        />
+      </TabNav.Navigator>
+    );
   }
-};
-
-const androidOptions = {
-  shifting: true,
-  activeColor: activeColor,
-  inactiveColor: inactiveColor,
-  barStyle: {
-    backgroundColor: backgroundColor
-  }
-};
-
-const Tabs = createTabNavigator(
-  {
-    Tab1: {
-      screen: Tab1,
-      navigationOptions: () => ({
-        ...getTabOptions(localize("tab.1"), "contact")
-      })
-    },
-    Tab2: {
-      screen: Tab2,
-      navigationOptions: () => ({
-        ...getTabOptions(localize("tab.2"), "airplane")
-      })
-    },
-    Tab3: {
-      screen: Tab3,
-      navigationOptions: () => ({
-        ...getTabOptions(localize("tab.3"), "list")
-      })
-    },
-    Tab4: {
-      screen: Tab4,
-      navigationOptions: () => ({
-        ...getTabOptions(localize("tab.4"), "beer")
-      })
-    }
-  },
-  {
-    ...androidOptions,
-    ...iosOptions
-  }
-);
-
-export default Tabs;
+}

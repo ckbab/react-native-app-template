@@ -1,15 +1,34 @@
-import { createSwitchNavigator } from "react-navigation";
+import React from "react";
+import { createStackNavigator } from "@react-navigation/stack";
 import Loader from "../components/Loader/Loader";
-import Stack from "./Stack";
+import MainStack from "./MainStack";
+import SwitchContext from "./SwitchContext";
 
-const Switch = createSwitchNavigator(
-  {
-    Stack: Stack,
-    Loader: Loader
-  },
-  {
-    initialRouteName: "Loader"
+const StackNav = createStackNavigator();
+
+export default class Switch extends React.Component {
+  state = {
+    loading: true,
+  };
+
+  _handleLoadingFinished = () => {
+    this.setState({ loading: false });
+  };
+
+  render() {
+    const { loading } = this.state;
+    return (
+      <SwitchContext.Provider
+        value={{ onLoadingFinished: this._handleLoadingFinished }}
+      >
+        <StackNav.Navigator headerMode="none">
+          {loading ? (
+            <StackNav.Screen name="Loader" component={Loader} />
+          ) : (
+            <StackNav.Screen name="MainStack" component={MainStack} />
+          )}
+        </StackNav.Navigator>
+      </SwitchContext.Provider>
+    );
   }
-);
-
-export default Switch;
+}

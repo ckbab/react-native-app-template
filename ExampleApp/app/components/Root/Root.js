@@ -1,25 +1,26 @@
-import { Asset, AppLoading, Font } from "expo";
+import { AppLoading } from "expo";
+import { Asset } from "expo-asset";
+import * as Font from "expo-font";
 import React from "react";
-import { Platform, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { Provider } from "react-redux";
 import { persistStore } from "redux-persist";
 import FlashMessage from "react-native-flash-message";
 import { shadow4 } from "../../constants/shadows";
 import store from "../../store/store";
-import { getStatusBarHeight } from "../../util/screen";
 import { trackScreenView } from "../../util/tracker";
 import LanguageWrapper from "./LanguageWrapper";
 
 export default class Root extends React.Component {
   state = {
     storeLoaded: false,
-    assetsLoaded: false
+    assetsLoaded: false,
   };
 
   componentDidMount() {
     persistStore(store, null, () => {
       this.setState({
-        storeLoaded: true
+        storeLoaded: true,
       });
     });
     // Add stats to Google Analytics
@@ -34,13 +35,13 @@ export default class Root extends React.Component {
     const images = [
       // require("../../images/example.png"),
     ];
-    const cacheImages = images.map(image => {
+    const cacheImages = images.map((image) => {
       return Asset.fromModule(image).downloadAsync();
     });
     const fonts = {
       "Roboto-Bold": require("../../../assets/RobotoCondensed-Regular.ttf"),
       "Roboto-Italic": require("../../../assets/RobotoCondensed-LightItalic.ttf"),
-      "Roboto-Standard": require("../../../assets/RobotoCondensed-Light.ttf")
+      "Roboto-Standard": require("../../../assets/RobotoCondensed-Light.ttf"),
     };
     const cacheFonts = Font.loadAsync(fonts);
     return Promise.all([...cacheImages, cacheFonts]);
@@ -79,18 +80,17 @@ export default class Root extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
   },
   flashContainer: {
-    paddingTop: Platform.select({ android: getStatusBarHeight(), ios: 0 }),
-    ...shadow4
+    ...shadow4,
   },
   flashTitle: {
     fontFamily: "Roboto-Bold",
-    fontSize: 16
+    fontSize: 16,
   },
   flashText: {
     fontFamily: "Roboto-Standard",
-    fontSize: 16
-  }
+    fontSize: 16,
+  },
 });

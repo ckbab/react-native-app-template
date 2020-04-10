@@ -9,13 +9,13 @@ export default class Icon extends React.Component {
     name: PropTypes.string,
     color: PropTypes.string,
     size: PropTypes.number,
-    style: PropTypes.any
+    style: PropTypes.any,
   };
 
   static defaultProps = {
     color: fontColor,
     size: 16,
-    style: {}
+    style: {},
   };
 
   render() {

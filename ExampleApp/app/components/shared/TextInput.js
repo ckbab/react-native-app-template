@@ -7,14 +7,14 @@ export default class TextInput extends Component {
   static propTypes = {
     style: PropTypes.any,
     disabled: PropTypes.bool,
-    placeholderTextColor: PropTypes.string
+    placeholderTextColor: PropTypes.string,
     // ...and all that native TextInput supports
   };
 
   static defaultProps = {
     style: {},
     disabled: false,
-    placeholderTextColor: grey2
+    placeholderTextColor: grey2,
   };
 
   focus = () => {
@@ -33,7 +33,7 @@ export default class TextInput extends Component {
     const { style, disabled, placeholderTextColor, ...rest } = this.props;
     return (
       <NativeTextInput
-        ref={component => (this.input = component)}
+        ref={(component) => (this.input = component)}
         style={[styles.container, style]}
         placeholderTextColor={placeholderTextColor}
         editable={!disabled}
@@ -48,6 +48,6 @@ const styles = StyleSheet.create({
   container: {
     fontFamily: "Roboto-Standard",
     fontSize: 16,
-    color: fontColor
-  }
+    color: fontColor,
+  },
 });

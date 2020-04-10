@@ -2,20 +2,20 @@ import { Updates } from "expo";
 import React from "react";
 import { ActivityIndicator, StyleSheet, View } from "react-native";
 import { primaryColor } from "../../constants/colors";
+import SwitchContext from "../../navigators/SwitchContext";
 import { localize } from "../../util/localization";
-import { pushScreen } from "../../util/navigation";
 import { Text } from "../shared";
 
-export default class Loader extends React.Component {
+class Loader extends React.Component {
   state = {
-    text: " " // Empty string so ActivityIndicator is not moved when text appears
+    text: " ", // Empty string so ActivityIndicator is not moved when text appears
   };
 
   async componentDidMount() {
     try {
       const { isAvailable } = await Updates.checkForUpdateAsync();
       if (isAvailable) {
-        const eventListener = async event => {
+        const eventListener = async (event) => {
           if (event.type === Updates.EventType.DOWNLOAD_STARTED) {
             this.setState({ text: localize("loader.downloading") });
           } else if (event.type === Updates.EventType.DOWNLOAD_FINISHED) {
@@ -41,9 +41,9 @@ export default class Loader extends React.Component {
   }
 
   _loadingFinished = () => {
-    const { navigation } = this.props;
+    const { onLoadingFinished } = this.props;
     clearTimeout(this.timeout);
-    pushScreen(navigation, "Stack");
+    onLoadingFinished();
   };
 
   render() {
@@ -64,9 +64,21 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: primaryColor
+    backgroundColor: primaryColor,
   },
   text: {
-    marginBottom: 32
-  }
+    marginBottom: 32,
+  },
 });
+
+export default class ExportedLoader extends React.Component {
+  render() {
+    return (
+      <SwitchContext.Consumer>
+        {({ onLoadingFinished }) => (
+          <Loader onLoadingFinished={onLoadingFinished} />
+        )}
+      </SwitchContext.Consumer>
+    );
+  }
+}

@@ -1,5 +1,5 @@
 const initialState = {
-  language: "sw"
+  language: "sw",
 };
 
 export default (state = initialState, action) => {
@@ -8,7 +8,7 @@ export default (state = initialState, action) => {
       const { language } = action.payload;
       return {
         ...state,
-        language
+        language,
       };
     }
     default:

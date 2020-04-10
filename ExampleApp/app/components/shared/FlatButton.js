@@ -12,13 +12,13 @@ export default class FlatButton extends React.Component {
     label: PropTypes.string.isRequired,
     icon: PropTypes.string,
     disabled: PropTypes.bool,
-    onPress: PropTypes.func.isRequired
+    onPress: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
     style: {},
     icon: null,
-    disabled: false
+    disabled: false,
   };
 
   render() {
@@ -44,18 +44,18 @@ const styles = StyleSheet.create({
     overflow: "hidden",
     flexDirection: "row",
     backgroundColor: "#fff",
-    borderRadius: 2
+    borderRadius: 2,
   },
   button: {
     flex: 1,
     flexDirection: "row",
     alignItems: "center",
-    padding: 16
+    padding: 16,
   },
   label: {
-    flex: 1
+    flex: 1,
   },
   icon: {
-    marginLeft: 16
-  }
+    marginLeft: 16,
+  },
 });

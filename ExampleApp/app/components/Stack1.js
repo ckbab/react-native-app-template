@@ -1,13 +1,23 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { ScrollView, StyleSheet } from "react-native";
 import * as Animatable from "react-native-animatable";
-import Stack from "../navigators/Stack";
+import Stack from "../navigators/MainStack";
 import { FlatButton, Text } from "./shared";
 
 export default class Stack1 extends React.Component {
+  _handleScroll = (event) => {
+    const { navigation } = this.props;
+    const isScrolled = event.nativeEvent.contentOffset.y > 0;
+    navigation.setParams({ isScrolled });
+  };
+
   render() {
     return (
-      <View style={styles.container}>
+      <ScrollView
+        style={styles.container}
+        contentContainerStyle={styles.content}
+        onScroll={this._handleScroll}
+      >
         <Animatable.View
           animation="fadeIn"
           duration={2000}
@@ -24,7 +34,7 @@ export default class Stack1 extends React.Component {
             );
           }}
         />
-      </View>
+      </ScrollView>
     );
   }
 }
@@ -33,7 +43,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
+  },
+  content: {
     alignItems: "center",
-    justifyContent: "center"
-  }
+    justifyContent: "center",
+  },
 });

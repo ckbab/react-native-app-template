@@ -1,25 +1,11 @@
-import { Constants } from "expo";
-import { Dimensions, Platform } from "react-native";
-import { Header } from "react-navigation";
+import { Dimensions } from "react-native";
 
-export const getScreenWidth = () => {
+export const getScreenWidth = (factor = 1) => {
   const width = Dimensions.get("window").width;
-  return width;
+  return width * factor;
 };
 
-export const getScreenHeight = () => {
+export const getScreenHeight = (factor = 1) => {
   const height = Dimensions.get("window").height;
-  return height;
-};
-
-export const getHeaderHeight = () => {
-  const statusBarHeight = Constants.statusBarHeight || 0;
-  const headerHeight = Header.HEIGHT || 0;
-  const offset = Platform.OS === "ios" ? -20 : 0; // To make it work on iPhoneX
-  const stickyHeaderHeight = headerHeight + statusBarHeight + offset;
-  return stickyHeaderHeight;
-};
-
-export const getStatusBarHeight = () => {
-  return Constants.statusBarHeight || 0;
+  return height * factor;
 };

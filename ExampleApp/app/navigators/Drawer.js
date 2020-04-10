@@ -1,16 +1,16 @@
-import { createDrawerNavigator } from "react-navigation";
-import Switch from "./Switch";
+import React from "react";
+import { createDrawerNavigator } from "@react-navigation/drawer";
 import Menu from "../components/Menu";
+import Switch from "./Switch";
 
-const Drawer = createDrawerNavigator(
-  {
-    Main: {
-      screen: Switch
-    }
-  },
-  {
-    contentComponent: Menu
+const DrawerNav = createDrawerNavigator();
+
+export default class Drawer extends React.Component {
+  render() {
+    return (
+      <DrawerNav.Navigator drawerContent={() => <Menu />}>
+        <DrawerNav.Screen name="Main" component={Switch} />
+      </DrawerNav.Navigator>
+    );
   }
-);
-
-export default Drawer;
+}

@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   TouchableNativeFeedback,
   TouchableWithoutFeedback,
-  View
+  View,
 } from "react-native";
 
 export default class Button extends React.Component {
@@ -15,14 +15,14 @@ export default class Button extends React.Component {
     onPress: PropTypes.func,
     style: PropTypes.any,
     type: PropTypes.oneOf(["opacity", "discrete"]),
-    disabled: PropTypes.bool
+    disabled: PropTypes.bool,
   };
 
   static defaultProps = {
     onPress: null,
     style: {},
     type: null,
-    disabled: false
+    disabled: false,
   };
 
   _getComponent = () => {
@@ -72,6 +72,6 @@ export default class Button extends React.Component {
 
 const styles = StyleSheet.create({
   disabled: {
-    opacity: 0.3
-  }
+    opacity: 0.3,
+  },
 });

@@ -5,7 +5,7 @@ import {
   Platform,
   StyleSheet,
   TouchableNativeFeedback,
-  View
+  View,
 } from "react-native";
 import { primaryColor } from "../../constants/colors";
 import { shadow2 } from "../../constants/shadows";
@@ -21,7 +21,7 @@ export default class ToolbarButton extends Component {
     loading: PropTypes.bool,
     disabled: PropTypes.bool,
     shadow: PropTypes.bool,
-    onPress: PropTypes.func.isRequired
+    onPress: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -30,7 +30,7 @@ export default class ToolbarButton extends Component {
     color: primaryColor,
     loading: false,
     disabled: false,
-    shadow: false
+    shadow: false,
   };
 
   render() {
@@ -41,7 +41,7 @@ export default class ToolbarButton extends Component {
       loading,
       shadow,
       disabled,
-      onPress
+      onPress,
     } = this.props;
     const iconLabel = icon ? (
       <Icon
@@ -91,15 +91,15 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     minWidth: 44,
-    height: 44
+    height: 44,
   },
   label: {
-    paddingHorizontal: 16
+    paddingHorizontal: 16,
   },
   disabled: {
-    opacity: 0.3
+    opacity: 0.3,
   },
   iconShadow: {
-    ...shadow2
-  }
+    ...shadow2,
+  },
 });

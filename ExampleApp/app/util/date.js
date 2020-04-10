@@ -5,19 +5,19 @@ moment.locale("sv");
 moment.tz.setDefault("Europe/Stockholm");
 
 moment.updateLocale("sv", {
-  ordinal: number => {
+  ordinal: (number) => {
     const char = [1, 2, 21, 22, 31].includes(number) ? "a" : "e";
     return number + ":" + char;
-  }
+  },
 });
 
 // e.g. two minutes ago
-export const relativeTime = date => {
+export const relativeTime = (date) => {
   return moment(date).fromNow();
 };
 
 // e.g. Today 08:30
-export const calendarTime = date => {
+export const calendarTime = (date) => {
   return moment(date).calendar();
 };
 
