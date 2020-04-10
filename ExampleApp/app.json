@@ -2,6 +2,7 @@
   "expo": {
     "name": "ExampleApp",
     "version": "1.0.0",
+    "skdVersion": "37.0.0",
     "slug": "example-app",
     "privacy": "unlisted",
     "platforms": ["ios", "android"],
