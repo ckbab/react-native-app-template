@@ -1,8 +1,7 @@
 import React from "react";
 import { ScrollView, StyleSheet } from "react-native";
-import * as Animatable from "react-native-animatable";
 import { pushScreen } from "../util/navigation";
-import { FlatButton, Text } from "./shared";
+import { Animation, FlatButton, Text } from "./shared";
 
 export default class Stack1 extends React.Component {
   _handleScroll = (event) => {
@@ -23,14 +22,14 @@ export default class Stack1 extends React.Component {
         contentContainerStyle={styles.content}
         onScroll={this._handleScroll}
       >
-        <Animatable.View
+        <Animation
           animation="fadeIn"
           duration={2000}
           direction="alternate"
-          iterationCount="infinite"
+          count="infinite"
         >
           <Text>Stack1</Text>
-        </Animatable.View>
+        </Animation>
         <FlatButton label="Open stack2" onPress={this._handleOpen} />
       </ScrollView>
     );
