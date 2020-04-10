@@ -1,7 +1,7 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import Loader from "../components/Loader/Loader";
-import MainStack from "./MainStack";
+import Drawer from "./Drawer";
 import SwitchContext from "./SwitchContext";
 
 const StackNav = createStackNavigator();
@@ -25,7 +25,7 @@ export default class Switch extends React.Component {
           {loading ? (
             <StackNav.Screen name="Loader" component={Loader} />
           ) : (
-            <StackNav.Screen name="MainStack" component={MainStack} />
+            <StackNav.Screen name="Drawer" component={Drawer} />
           )}
         </StackNav.Navigator>
       </SwitchContext.Provider>

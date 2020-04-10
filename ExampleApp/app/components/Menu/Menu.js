@@ -14,7 +14,7 @@ export default class Menu extends React.Component {
 
   _handleOpenTab = () => {
     const { navigation } = this.props;
-    pushScreen(navigation, "Tabs3");
+    pushScreen(navigation, "Main", { screen: "Tab3" });
   };
 
   render() {

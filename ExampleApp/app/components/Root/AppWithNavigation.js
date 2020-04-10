@@ -1,12 +1,12 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import Drawer from "../../navigators/Drawer";
+import Switch from "../../navigators/Switch";
 
 export default class AppWithNavigation extends React.Component {
   render() {
     return (
       <NavigationContainer>
-        <Drawer />
+        <Switch />
       </NavigationContainer>
     );
   }
