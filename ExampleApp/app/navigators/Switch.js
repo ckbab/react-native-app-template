@@ -11,6 +11,10 @@ export default class Switch extends React.Component {
     loading: true,
   };
 
+  forceReload = () => {
+    this.setState({ loading: true });
+  };
+
   _handleLoadingFinished = () => {
     this.setState({ loading: false });
   };
