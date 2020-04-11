@@ -6,8 +6,8 @@ import {
   getNow,
   relativeTime,
   smartDate,
-} from "../util/date";
-import { FlatButton, Text } from "./shared";
+} from "../../util/date";
+import { FlatButton, Text } from "../shared";
 
 export default class Tab4 extends React.Component {
   state = {

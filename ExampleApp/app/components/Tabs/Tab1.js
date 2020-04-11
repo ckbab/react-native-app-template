@@ -1,12 +1,12 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import { connect } from "react-redux";
-import { addItem } from "../store/items/itemsActions";
-import { setLanguage } from "../store/settings/settingsActions";
-import { getCount, getItems } from "../store/items/itemsSelector";
-import { localize } from "../util/localization";
-import { pushScreen } from "../util/navigation";
-import { Button, FlatButton, Text, TextInput } from "./shared";
+import { addItem } from "../../store/items/itemsActions";
+import { setLanguage } from "../../store/settings/settingsActions";
+import { getCount, getItems } from "../../store/items/itemsSelector";
+import { localize } from "../../util/localization";
+import { pushScreen } from "../../util/navigation";
+import { Button, FlatButton, Text, TextInput } from "../shared";
 
 class Tab1 extends React.Component {
   state = {
@@ -36,7 +36,7 @@ class Tab1 extends React.Component {
 
   _handleOpenStack = () => {
     const { navigation } = this.props;
-    pushScreen(navigation, "Stack1");
+    pushScreen(navigation, "FirstScreen");
   };
 
   render() {
@@ -71,7 +71,7 @@ class Tab1 extends React.Component {
             disabled={name.length === 0}
           />
         </View>
-        <FlatButton label="Open stack1" onPress={this._handleOpenStack} />
+        <FlatButton label="Open first screen" onPress={this._handleOpenStack} />
       </View>
     );
   }

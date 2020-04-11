@@ -1,9 +1,9 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Tab1 from "../components/Tab1";
-import Tab2 from "../components/Tab2";
-import Tab3 from "../components/Tab3";
-import Tab4 from "../components/Tab4";
+import Tab1 from "../components/Tabs/Tab1";
+import Tab2 from "../components/Tabs/Tab2";
+import Tab3 from "../components/Tabs/Tab3";
+import Tab4 from "../components/Tabs/Tab4";
 import { localize } from "../util/localization";
 import { getTabBarOptions, getTabItemOptions } from "../util/navigation";
 

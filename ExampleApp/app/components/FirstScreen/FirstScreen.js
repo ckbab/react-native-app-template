@@ -1,9 +1,9 @@
 import React from "react";
 import { ScrollView, StyleSheet } from "react-native";
-import { pushScreen } from "../util/navigation";
-import { Animation, FlatButton, Text } from "./shared";
+import { pushScreen } from "../../util/navigation";
+import { Animation, FlatButton, Text } from "../shared";
 
-export default class Stack1 extends React.Component {
+export default class FirstScreen extends React.Component {
   _handleScroll = (event) => {
     const { navigation } = this.props;
     const isScrolled = event.nativeEvent.contentOffset.y > 0;
@@ -12,7 +12,7 @@ export default class Stack1 extends React.Component {
 
   _handleOpen = () => {
     const { navigation } = this.props;
-    pushScreen(navigation, "Stack2");
+    pushScreen(navigation, "SecondScreen");
   };
 
   render() {
@@ -28,9 +28,9 @@ export default class Stack1 extends React.Component {
           direction="alternate"
           count="infinite"
         >
-          <Text>Stack1</Text>
+          <Text>First screen</Text>
         </Animation>
-        <FlatButton label="Open stack2" onPress={this._handleOpen} />
+        <FlatButton label="Open second screen" onPress={this._handleOpen} />
       </ScrollView>
     );
   }

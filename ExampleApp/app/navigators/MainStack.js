@@ -1,7 +1,7 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import Stack1 from "../components/Stack1";
-import Stack2 from "../components/Stack2";
+import FirstScreen from "../components/FirstScreen/FirstScreen";
+import SecondScreen from "../components/SecondScreen/SecondScreen";
 import { getStackOptions } from "../util/navigation";
 import { MenuButton } from "./Components";
 import Tabs from "./Tabs";
@@ -19,8 +19,8 @@ export default class MainStack extends React.Component {
             headerLeft: () => MenuButton(navigation),
           })}
         />
-        <StackNav.Screen name="Stack1" component={Stack1} />
-        <StackNav.Screen name="Stack2" component={Stack2} />
+        <StackNav.Screen name="FirstScreen" component={FirstScreen} />
+        <StackNav.Screen name="SecondScreen" component={SecondScreen} />
       </StackNav.Navigator>
     );
   }

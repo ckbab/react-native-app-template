@@ -1,9 +1,9 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import { showAlert, showConfirm } from "../util/dialog";
-import { localize } from "../util/localization";
-import { showMessage, showError } from "../util/message";
-import { FlatButton } from "./shared";
+import { showAlert, showConfirm } from "../../util/dialog";
+import { localize } from "../../util/localization";
+import { showMessage, showError } from "../../util/message";
+import { FlatButton } from "../shared";
 
 export default class Tab3 extends React.Component {
   _handleAlertPress = async () => {
