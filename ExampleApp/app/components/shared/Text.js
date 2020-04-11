@@ -46,7 +46,9 @@ export default class Text extends Component {
 
   _getFontFamily = () => {
     const { bold, italic } = this.props;
-    if (bold) {
+    if (bold && italic) {
+      return "Roboto-BoldItalic";
+    } else if (bold) {
       return "Roboto-Bold";
     } else if (italic) {
       return "Roboto-Italic";

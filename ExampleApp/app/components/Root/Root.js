@@ -41,6 +41,7 @@ export default class Root extends React.Component {
     const fonts = {
       "Roboto-Bold": require("../../../assets/RobotoCondensed-Regular.ttf"),
       "Roboto-Italic": require("../../../assets/RobotoCondensed-LightItalic.ttf"),
+      "Roboto-BoldItalic": require("../../../assets/RobotoCondensed-Italic.ttf"),
       "Roboto-Standard": require("../../../assets/RobotoCondensed-Light.ttf"),
     };
     const cacheFonts = Font.loadAsync(fonts);
