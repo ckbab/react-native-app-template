@@ -1,7 +1,7 @@
 import { Updates } from "expo";
 import React from "react";
 import { ActivityIndicator, StyleSheet, View } from "react-native";
-import { primaryColor } from "../../constants/colors";
+import { backgroundColor } from "../../constants/colors";
 import SwitchContext from "../../navigators/SwitchContext";
 import { localize } from "../../util/localization";
 import { Text } from "../shared";
@@ -50,10 +50,10 @@ class Loader extends React.Component {
     const { text } = this.state;
     return (
       <View style={styles.container}>
-        <Text color="#fff" size="large" style={styles.text}>
+        <Text style={styles.text} size="large" bold>
           {text}
         </Text>
-        <ActivityIndicator color="#fff" size="large" />
+        <ActivityIndicator size="large" />
       </View>
     );
   }
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: primaryColor,
+    backgroundColor: backgroundColor,
   },
   text: {
     marginBottom: 32,
