@@ -1,7 +1,6 @@
-import axios from "axios";
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import { apiUrl } from "../../constants/config";
+import { get } from "../../util/server";
 import { Text } from "../shared";
 
 export default class Tab2 extends React.Component {
@@ -11,11 +10,14 @@ export default class Tab2 extends React.Component {
   };
 
   componentDidMount() {
-    axios.get(apiUrl + "/todos").then((response) => {
-      const items = response.data.slice(0, 10);
-      this.setState({ items, loading: false });
-    });
+    this._fetchItems();
   }
+
+  _fetchItems = async () => {
+    const response = await get("todos");
+    const items = response.slice(0, 10);
+    this.setState({ items, loading: false });
+  };
 
   render() {
     const { loading, items } = this.state;
