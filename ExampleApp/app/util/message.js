@@ -14,8 +14,8 @@ export const showMessage = (message, description) => {
 
 export const showError = (text) => {
   showFlashMessage({
-    message: localize("app.message.error.title"),
-    description: text || localize("app.message.error.subtitle"),
+    message: localize("util.message.error.title"),
+    description: text || localize("util.message.error.subtitle"),
     duration: 4000,
     color: "#fff",
     backgroundColor: errorColor,

@@ -2,8 +2,9 @@
   "language.sv": "Svenska",
   "language.en": "English",
 
-  "app.message.error.title": "Något gick fel",
-  "app.message.error.subtitle": "Kunde inte hitta server",
+  "util.date.unknown": "Okänt datum",
+  "util.message.error.title": "Något gick fel",
+  "util.message.error.subtitle": "Kunde inte hitta server",
 
   "loader.downloading": "Laddar ner senaste versionen...",
 

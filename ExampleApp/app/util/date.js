@@ -1,5 +1,8 @@
 import moment from "moment-timezone";
+import "moment/locale/en-gb";
 import "moment/locale/sv";
+import { getLanguage, localize } from "./localization";
+import { uncapitalize } from "./string";
 
 moment.locale("sv");
 moment.tz.setDefault("Europe/Stockholm");
@@ -13,31 +16,51 @@ moment.updateLocale("sv", {
 
 // e.g. two minutes ago
 export const relativeTime = (date) => {
-  return moment(date).fromNow();
+  if (!date) {
+    return localize("util.date.unknown");
+  }
+  return moment.utc(date).local().locale(getLanguage()).fromNow();
 };
 
 // e.g. Today 08:30
 export const calendarTime = (date) => {
-  return moment(date).calendar();
+  if (!date) {
+    return localize("util.date.unknown");
+  }
+  return moment.utc(date).local().locale(getLanguage()).calendar();
 };
 
 // e.g. Thursday 5th December (depending in format)
-export const formatDate = (date, format) => {
-  return moment(date).format(format);
+export const formatDate = (date, format, parseFormat) => {
+  if (!date) {
+    return localize("util.date.unknown");
+  }
+  return moment
+    .utc(date, parseFormat)
+    .local()
+    .locale(getLanguage())
+    .format(format);
 };
 
-// Returns either relative or calendar time depending in interval (hours)
-export const smartDate = (date, hours = 2) => {
-  const a = moment();
-  const b = moment(date);
-  const diff = a.diff(b, "minutes");
-  if (diff <= hours * 60) {
-    return relativeTime(date);
+// Returns smart date depending on interval
+export const smartDate = (date, options = {}) => {
+  if (!date) {
+    return localize("util.date.unknown");
+  }
+  const a = moment.utc(date).startOf("day");
+  const b = moment().startOf("day");
+  const diff = a.diff(b, "days");
+  if (diff >= -1 && diff <= 1) {
+    return uncapitalize(calendarTime(date));
+  } else if (diff >= -1 && diff <= 6) {
+    return formatDate(date, "dddd LT");
   } else {
-    return calendarTime(date);
+    const time = options.showTime ? formatDate(date, "LT") : null;
+    const formatedDate = formatDate(date, "dddd Do MMMM");
+    return time ? `${formatedDate} ${time}` : formatedDate;
   }
 };
 
-export const getNow = () => {
-  return moment();
+export const getDate = (date, parseFormat) => {
+  return moment.utc(date, parseFormat);
 };

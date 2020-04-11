@@ -3,7 +3,7 @@ import { StyleSheet, View } from "react-native";
 import {
   calendarTime,
   formatDate,
-  getNow,
+  getDate,
   relativeTime,
   smartDate,
 } from "../../util/date";
@@ -23,11 +23,11 @@ export default class Tab4 extends React.Component {
         <Text>Format date: {formatDate(date, "dddd Do MMMM")}</Text>
         <Text>
           Smart date (30 mins ago):
-          {smartDate(getNow().subtract(30, "minutes"), 1)}
+          {smartDate(getDate().subtract(30, "minutes"), 1)}
         </Text>
         <Text>
           Smart date (2 hours ago):
-          {smartDate(getNow().subtract(120, "minutes"), 1)}
+          {smartDate(getDate().subtract(120, "minutes"), 1)}
         </Text>
         <FlatButton label="Force render" onPress={() => this.forceUpdate()} />
       </View>
