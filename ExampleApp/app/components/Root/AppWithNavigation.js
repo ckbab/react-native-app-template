@@ -3,6 +3,7 @@ import React from "react";
 import { AppState } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import Switch from "../../navigators/Switch";
+import { getPushToken } from "../../util/push";
 
 export default class AppWithNavigation extends React.Component {
   state = {
@@ -10,6 +11,7 @@ export default class AppWithNavigation extends React.Component {
   };
 
   componentDidMount() {
+    this._handleInit();
     AppState.addEventListener("change", this._handleAppStateChange);
   }
 
@@ -23,6 +25,11 @@ export default class AppWithNavigation extends React.Component {
       this._handleSync();
     }
     this.setState({ appState: nextAppState });
+  };
+
+  _handleInit = async () => {
+    const token = await getPushToken();
+    console.log("save token to server", token);
   };
 
   _handleSync = async () => {
