@@ -1,4 +1,4 @@
-import { Updates } from "expo";
+import * as Updates from "expo-updates";
 import React from "react";
 import { AppState } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";

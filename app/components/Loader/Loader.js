@@ -1,4 +1,4 @@
-import { Updates } from "expo";
+import * as Updates from "expo-updates";
 import React from "react";
 import { ActivityIndicator, StyleSheet, View } from "react-native";
 import { backgroundColor } from "../../constants/colors";
@@ -15,34 +15,26 @@ class Loader extends React.Component {
     try {
       const { isAvailable } = await Updates.checkForUpdateAsync();
       if (isAvailable) {
-        const eventListener = async (event) => {
-          if (event.type === Updates.EventType.DOWNLOAD_STARTED) {
-            this.setState({ text: localize("loader.downloading") });
-          } else if (event.type === Updates.EventType.DOWNLOAD_FINISHED) {
-            Updates.reloadFromCache();
-          } else if (event.type === Updates.EventType.ERROR) {
-            // Error occured... just continue with current version
-            this._loadingFinished();
-          }
-        };
-        Updates.fetchUpdateAsync({ eventListener });
-        // If no event received within 30 sec... go to current version
-        this.timeout = setTimeout(() => {
+        this.setState({ text: localize("loader.downloading") });
+        const { isNew } = Updates.fetchUpdateAsync();
+        if (isNew) {
+          Updates.reloadAsync();
+        } else {
+          // Update "available" but not "new". Should not happen though.
           this._loadingFinished();
-        }, 30000);
+        }
       } else {
-        // No Update available...
+        // No update available.
         this._loadingFinished();
       }
     } catch (e) {
-      // Error occured... e.g. when checking in dev mode
+      // Error occured... e.g. when checking in dev mode.
       this._loadingFinished();
     }
   }
 
   _loadingFinished = () => {
     const { onLoadingFinished } = this.props;
-    clearTimeout(this.timeout);
     onLoadingFinished();
   };
 
