@@ -1,11 +1,12 @@
-import { AppLoading } from "expo";
+import AppLoading from "expo-app-loading";
 import { Asset } from "expo-asset";
 import * as Font from "expo-font";
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import { Provider } from "react-redux";
-import { persistStore } from "redux-persist";
 import FlashMessage from "react-native-flash-message";
+import { persistStore } from "redux-persist";
+import { Provider } from "react-redux";
+import { errorColor } from "../../constants/colors";
 import { shadow4 } from "../../constants/shadows";
 import store from "../../store/store";
 import { trackScreenView } from "../../util/tracker";
@@ -15,6 +16,7 @@ export default class Root extends React.Component {
   state = {
     storeLoaded: false,
     assetsLoaded: false,
+    error: false,
   };
 
   componentDidMount() {
@@ -29,6 +31,10 @@ export default class Root extends React.Component {
 
   _handleAssetsLoaded = () => {
     this.setState({ assetsLoaded: true });
+  };
+
+  _handleError = () => {
+    this.setState({ error: true });
   };
 
   _loadAssets = async () => {
@@ -49,12 +55,17 @@ export default class Root extends React.Component {
   };
 
   render() {
-    const { assetsLoaded, storeLoaded } = this.state;
+    const { assetsLoaded, error, storeLoaded } = this.state;
+    if (error) {
+      return <View style={styles.error} />;
+    }
+
     if (!assetsLoaded) {
       return (
         <AppLoading
           startAsync={this._loadAssets}
           onFinish={this._handleAssetsLoaded}
+          onError={this._handleError}
         />
       );
     }
@@ -82,6 +93,9 @@ export default class Root extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  error: {
+    backgroundColor: errorColor,
   },
   flashContainer: {
     ...shadow4,

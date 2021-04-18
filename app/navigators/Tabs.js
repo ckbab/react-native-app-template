@@ -18,7 +18,7 @@ export default class Tabs extends React.Component {
         <TabNav.Screen
           name="Tab1"
           component={Tab1}
-          options={getTabItemOptions(localize("tab.1"), "contact")}
+          options={getTabItemOptions(localize("tab.1"), "call")}
         />
         <TabNav.Screen
           name="Tab2"
