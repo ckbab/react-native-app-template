@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import { backgroundColor } from "../../constants/colors";
 import { get } from "../../util/server";
-import { Text } from "../shared";
+import { Loader, Text } from "../shared";
 
 export default class Tab2 extends React.Component {
   state = {
@@ -25,7 +25,7 @@ export default class Tab2 extends React.Component {
     return (
       <View style={styles.container}>
         {loading ? (
-          <Text>Loading...</Text>
+          <Loader />
         ) : (
           <View>
             <Text>Total number of remote items: {items.length}</Text>
