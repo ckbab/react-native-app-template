@@ -4,6 +4,7 @@ import { backgroundColor, fontColor, primaryColor } from "../constants/colors";
 import { shadow2 } from "../constants/shadows";
 import { CustomIcon, Icon, Text } from "../components/shared";
 import { BackButton, EmptyButton } from "../navigators/Components";
+import { trackScreenView } from "./tracker";
 
 export const getTabBarOptions = () => {
   const activeColor = primaryColor;
@@ -55,6 +56,7 @@ export const getStackOptions = ({ navigation, route }) => {
 export const pushScreen = (navigation, name, params) => {
   const key = name + JSON.stringify(params);
   navigation.navigate({ name, key, params });
+  trackScreenView(name);
 };
 
 const styles = StyleSheet.create({
