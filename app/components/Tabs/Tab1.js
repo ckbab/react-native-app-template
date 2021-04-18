@@ -1,9 +1,10 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import { connect } from "react-redux";
+import { backgroundColor, darkGrey, lightGrey } from "../../constants/colors";
 import { addItem } from "../../store/items/itemsActions";
-import { setLanguage } from "../../store/settings/settingsActions";
 import { getCount, getItems } from "../../store/items/itemsSelector";
+import { setLanguage } from "../../store/settings/settingsActions";
 import { localize } from "../../util/localization";
 import { pushScreen } from "../../util/navigation";
 import { Button, FlatButton, Text, TextInput } from "../shared";
@@ -80,20 +81,20 @@ class Tab1 extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: backgroundColor,
     alignItems: "center",
     justifyContent: "center",
   },
   form: {
-    backgroundColor: "#eee",
+    backgroundColor: lightGrey,
     padding: 16,
   },
   input: {
     marginBottom: 8,
     height: 32,
     width: 200,
-    backgroundColor: "#fff",
-    borderColor: "#ccc",
+    backgroundColor: backgroundColor,
+    borderColor: darkGrey,
     borderWidth: 1,
   },
 });

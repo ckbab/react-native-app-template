@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
+import { backgroundColor } from "../../constants/colors";
 import { get } from "../../util/server";
 import { Text } from "../shared";
 
@@ -41,7 +42,7 @@ export default class Tab2 extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: backgroundColor,
     alignItems: "center",
     justifyContent: "center",
   },

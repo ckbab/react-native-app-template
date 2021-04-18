@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
+import { backgroundColor } from "../../constants/colors";
 import {
   calendarTime,
   formatDate,
@@ -38,7 +39,7 @@ export default class Tab4 extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: backgroundColor,
     alignItems: "center",
     justifyContent: "center",
   },

@@ -1,5 +1,6 @@
 import React from "react";
 import { ScrollView, StyleSheet } from "react-native";
+import { backgroundColor } from "../../constants/colors";
 import { pushScreen } from "../../util/navigation";
 import { Animation, FlatButton, Text } from "../shared";
 
@@ -39,7 +40,7 @@ export default class FirstScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: backgroundColor,
   },
   content: {
     alignItems: "center",

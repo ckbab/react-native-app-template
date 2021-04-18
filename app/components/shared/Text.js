@@ -35,7 +35,7 @@ export default class Text extends Component {
     } else if (size === "medium") {
       return 16;
     } else if (size === "large") {
-      return 18;
+      return 20;
     } else if (size === "x-large") {
       return 24;
     } else if (size === "xx-large") {

@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import { grey1 } from "../../constants/colors";
+import { backgroundColor, grey1 } from "../../constants/colors";
 import Button from "./Button";
 import Icon from "./Icon";
 import Text from "./Text";
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
   buttonContainer: {
     overflow: "hidden",
     flexDirection: "row",
-    backgroundColor: "#fff",
+    backgroundColor: backgroundColor,
     borderRadius: 2,
   },
   button: {

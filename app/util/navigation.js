@@ -6,7 +6,6 @@ import { CustomIcon, Icon, Text } from "../components/shared";
 import { BackButton, EmptyButton } from "../navigators/Components";
 
 export const getTabBarOptions = () => {
-  const backgroundColor = "#fff";
   const activeColor = primaryColor;
   const inactiveColor = fontColor;
   return {
@@ -39,6 +38,7 @@ export const getStackOptions = ({ navigation, route }) => {
     headerStyle: {
       backgroundColor: backgroundColor,
       elevation: 0,
+      shadowOffset: { height: 0 },
       ...shadow,
     },
     headerTintColor: primaryColor,
