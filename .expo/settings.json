@@ -5,6 +5,6 @@
   "minify": false,
   "urlRandomness": "xk-sb2",
   "https": false,
-  "scheme": null,
-  "devClient": false
+  "devClient": true,
+  "scheme": "exp+example-app"
 }

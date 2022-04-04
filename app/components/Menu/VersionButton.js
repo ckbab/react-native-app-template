@@ -1,4 +1,5 @@
 import Constants from "expo-constants";
+import * as Updates from "expo-updates";
 import React from "react";
 import {
   Platform,
@@ -27,7 +28,7 @@ export default class VersionButton extends React.Component {
       android: platform.android ? platform.android.versionCode : 0,
     });
     const expoVersion = Constants.expoVersion;
-    const channel = Constants.manifest.releaseChannel;
+    const channel = Updates.releaseChannel;
     const appVersion = appConfig.expo.version;
     return { appVersion, expoVersion, channel, nativeVersion };
   };
