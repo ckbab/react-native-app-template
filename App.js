@@ -1,4 +1,4 @@
-import { registerRootComponent } from "expo";
+import React from "react";
 import { LogBox } from "react-native";
 import Root from "./app/components/Root/Root";
 
@@ -7,4 +7,6 @@ LogBox.ignoreLogs([
   "Non-serializable values were found in the navigation state",
 ]);
 
-registerRootComponent(Root);
+export default function App() {
+  return <Root />;
+}
