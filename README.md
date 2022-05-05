@@ -4,7 +4,7 @@
 
 1. Create new repo using this repo as template.
 
-2. Run `eas update:configure`.
+2. Run `eas update:configure` and copy `updates.url` to `app.json`.
 
 3. Update name, slug etc in `app.json`
 

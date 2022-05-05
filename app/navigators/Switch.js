@@ -9,7 +9,7 @@ const StackNav = createStackNavigator();
 export default function Switch() {
   return (
     <NavigationContainer>
-      <StackNav.Navigator screenOptions={{ headerShown: false }}>
+      <StackNav.Navigator>
         <StackNav.Screen name="Home" component={Home} />
         <StackNav.Screen name="AppInfo" component={AppInfo} />
       </StackNav.Navigator>

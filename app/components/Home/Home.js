@@ -1,10 +1,12 @@
-import { FlatButton, Screen } from "@ckbab/react-native-components";
+import { FlatButton, Screen, Text } from "@ckbab/react-native-components";
 import { useLocalization } from "@ckbab/react-native-components/hooks";
 import React, { useLayoutEffect } from "react";
 import { StyleSheet } from "react-native";
+import { useSelector } from "react-redux";
 
 export default function Home({ navigation }) {
   const localization = useLocalization();
+  const language = useSelector((state) => state?.settings?.language);
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -16,8 +18,9 @@ export default function Home({ navigation }) {
     <Screen navigation={navigation} contentContainerStyle={styles.content}>
       <FlatButton
         label={localization.translate("home.button")}
-        onPress={navigation.navigate("AppInfo")}
+        onPress={() => navigation.navigate("AppInfo")}
       />
+      <Text>{language}</Text>
     </Screen>
   );
 }
