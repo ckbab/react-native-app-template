@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "ExampleApp",
+    "name": "Template App",
     "version": "1.0.0",
-    "slug": "example-app",
+    "slug": "template-app",
     "privacy": "unlisted",
     "platforms": ["ios", "android"],
     "orientation": "portrait",
@@ -22,12 +22,15 @@
     },
     "assetBundlePatterns": ["**/*"],
     "android": {
-      "package": "com.example.app",
+      "package": "se.template",
       "icon": "./assets/android-icon.png"
     },
     "ios": {
-      "bundleIdentifier": "com.example.app",
+      "bundleIdentifier": "se.template",
       "icon": "./assets/ios-icon.png"
+    },
+    "runtimeVersion": {
+      "policy": "sdkVersion"
     }
   }
 }

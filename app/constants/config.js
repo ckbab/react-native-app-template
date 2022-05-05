@@ -1,2 +1,1 @@
-export const apiUrl = "https://jsonplaceholder.typicode.com";
-export const trackerId = "XXXX";
+export const apiUrl = "https://ckbab.se/api";

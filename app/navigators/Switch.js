@@ -1,38 +1,18 @@
-import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import Loader from "../components/Loader/Loader";
-import Drawer from "./Drawer";
-import SwitchContext from "./SwitchContext";
+import React from "react";
+import AppInfo from "../components/AppInfo/AppInfo";
+import Home from "../components/Home/Home";
 
 const StackNav = createStackNavigator();
 
-export default class Switch extends React.Component {
-  state = {
-    loading: true,
-  };
-
-  forceReload = () => {
-    this.setState({ loading: true });
-  };
-
-  _handleLoadingFinished = () => {
-    this.setState({ loading: false });
-  };
-
-  render() {
-    const { loading } = this.state;
-    return (
-      <SwitchContext.Provider
-        value={{ onLoadingFinished: this._handleLoadingFinished }}
-      >
-        <StackNav.Navigator headerMode="none">
-          {loading ? (
-            <StackNav.Screen name="Loader" component={Loader} />
-          ) : (
-            <StackNav.Screen name="Drawer" component={Drawer} />
-          )}
-        </StackNav.Navigator>
-      </SwitchContext.Provider>
-    );
-  }
+export default function Switch() {
+  return (
+    <NavigationContainer>
+      <StackNav.Navigator screenOptions={{ headerShown: false }}>
+        <StackNav.Screen name="Home" component={Home} />
+        <StackNav.Screen name="AppInfo" component={AppInfo} />
+      </StackNav.Navigator>
+    </NavigationContainer>
+  );
 }

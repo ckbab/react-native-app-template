@@ -1,9 +1,6 @@
 export const primaryColor = "#cc00ff";
-export const backgroundColor = "#fff";
-export const fontColor = "#333";
+export const backgroundColor = "#eeeeee";
+export const fontColor = "#111111";
 
 export const errorColor = "#ff0000";
-export const successColor = "#008000";
-
-export const lightGrey = "#eee";
-export const darkGrey = "#999";
+export const successColor = "#00ff00";
