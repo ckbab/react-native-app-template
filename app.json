@@ -1,18 +1,19 @@
 {
   "expo": {
-    "name": "Template App",
+    "name": "Template",
     "version": "1.0.0",
     "slug": "template-app",
     "privacy": "unlisted",
     "platforms": ["ios", "android"],
     "orientation": "portrait",
+    "icon": "./assets/icons/app.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/icons/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
     "notification": {
-      "icon": "./assets/notification-icon.png",
+      "icon": "./assets/icons/notification.png",
       "color": "#000000",
       "iosDisplayInForeground": true
     },
@@ -22,12 +23,10 @@
     },
     "assetBundlePatterns": ["**/*"],
     "android": {
-      "package": "se.template",
-      "icon": "./assets/android-icon.png"
+      "package": "se.template"
     },
     "ios": {
-      "bundleIdentifier": "se.template",
-      "icon": "./assets/ios-icon.png"
+      "bundleIdentifier": "se.template"
     },
     "runtimeVersion": {
       "policy": "sdkVersion"
