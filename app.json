@@ -6,14 +6,14 @@
     "privacy": "unlisted",
     "platforms": ["ios", "android"],
     "orientation": "portrait",
-    "icon": "./assets/icons/app.png",
+    "icon": "./assets/images/app-icon.png",
     "splash": {
-      "image": "./assets/icons/splash.png",
-      "resizeMode": "contain",
+      "image": "./assets/images/splash-screen.png",
+      "resizeMode": "cover",
       "backgroundColor": "#ffffff"
     },
     "notification": {
-      "icon": "./assets/icons/notification.png",
+      "icon": "./assets/images/notification-icon.png",
       "color": "#000000",
       "iosDisplayInForeground": true
     },
@@ -23,7 +23,11 @@
     },
     "assetBundlePatterns": ["**/*"],
     "android": {
-      "package": "se.template"
+      "package": "se.template",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      }
     },
     "ios": {
       "bundleIdentifier": "se.template"

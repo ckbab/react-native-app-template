@@ -1,4 +1,3 @@
-import "expo-dev-client";
 import React from "react";
 import { LogBox } from "react-native";
 import Root from "./app/components/Root/Root";
