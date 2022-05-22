@@ -1,6 +1,7 @@
 {
   "home.title": "Välkommen",
   "home.button": "Visa app-information",
+  "home.currentLanguage": "Aktuellt språk: {0}",
 
   "appInfo.title": "App-information"
 }

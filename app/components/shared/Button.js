@@ -2,13 +2,7 @@ import PropTypes from "prop-types";
 import React, { useRef } from "react";
 import { Animated, Pressable, StyleSheet } from "react-native";
 
-export default function Button({
-  children,
-  disabled,
-  onLongPress,
-  onPress,
-  style,
-}) {
+export default function Button({ children, disabled, onPress, style }) {
   const animate = useRef(new Animated.Value(0)).current;
   const scale = animate.interpolate({
     inputRange: [0, 1],
@@ -35,7 +29,6 @@ export default function Button({
     <Pressable
       disabled={disabled}
       onPress={() => setTimeout(() => onPress && onPress(), 100)}
-      onLongPress={onLongPress}
       onPressIn={onPressIn}
       onPressOut={onPressOut}
     >
@@ -51,7 +44,6 @@ export default function Button({
 Button.propTypes = {
   disabled: PropTypes.bool,
   children: PropTypes.node,
-  onLongPress: PropTypes.func,
   onPress: PropTypes.func,
   style: PropTypes.any,
 };
@@ -59,7 +51,6 @@ Button.propTypes = {
 Button.defaultProps = {
   disabled: false,
   children: null,
-  onLongPress: null,
   onPress: null,
   style: {},
 };

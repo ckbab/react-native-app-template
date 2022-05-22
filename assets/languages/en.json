@@ -1,6 +1,7 @@
 {
   "home.title": "Welcome",
   "home.button": "Show app info",
+  "home.currentLanguage": "Current language: {0}",
 
   "appInfo.title": "App information"
 }

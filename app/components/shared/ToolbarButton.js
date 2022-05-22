@@ -34,7 +34,7 @@ export default function ToolbarButton({
       disabled={disabled}
     >
       {icon ? (
-        <Icon name={icon} size={24} color={color} />
+        <Icon name={icon} size={40} color={color} />
       ) : (
         <Text style={[styles.label, { color }]}>{label}</Text>
       )}
