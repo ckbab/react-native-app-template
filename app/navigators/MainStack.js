@@ -6,7 +6,7 @@ import Home from "../components/Home/Home";
 
 const StackNav = createStackNavigator();
 
-export default function Switch() {
+export default function MainStack() {
   return (
     <NavigationContainer>
       <StackNav.Navigator>

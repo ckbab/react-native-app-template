@@ -4,7 +4,7 @@ import { AppContextProvider } from "../../context/AppContext";
 import English from "../../../assets/languages/en.json";
 import Swedish from "../../../assets/languages/sv.json";
 import { apiUrl } from "../../constants/config";
-import Switch from "../../navigators/Switch";
+import MainStack from "../../navigators/MainStack";
 import settings from "../../reducers/settings";
 import {
   backgroundColor,
@@ -52,7 +52,7 @@ export default function Root() {
       }}
     >
       <AppContextProvider>
-        <Switch />
+        <MainStack />
       </AppContextProvider>
     </AppContainer>
   );
