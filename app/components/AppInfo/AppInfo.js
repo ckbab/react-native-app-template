@@ -1,7 +1,8 @@
-import { DevInfo, Screen } from "@ckbab/react-native-components";
+import { DevInfo } from "@ckbab/react-native-components";
 import { useLocalization } from "@ckbab/react-native-components/hooks";
 import React, { useLayoutEffect } from "react";
-import { StyleSheet } from "react-native";
+import { ScrollView, StyleSheet } from "react-native";
+import { Screen } from "../shared";
 
 export default function AppInfo({ navigation }) {
   const localization = useLocalization();
@@ -13,8 +14,16 @@ export default function AppInfo({ navigation }) {
   }, [localization, navigation]);
 
   return (
-    <Screen navigation={navigation} contentContainerStyle={styles.content}>
-      <DevInfo />
+    <Screen navigation={navigation}>
+      {({ backgroundColor, onScroll, paddingBottom }) => (
+        <ScrollView
+          style={{ backgroundColor }}
+          contentContainerStyle={[styles.content, { paddingBottom }]}
+          onScroll={onScroll}
+        >
+          <DevInfo />
+        </ScrollView>
+      )}
     </Screen>
   );
 }

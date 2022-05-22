@@ -9,39 +9,47 @@ import settings from "../../reducers/settings";
 import {
   backgroundColor,
   errorColor,
-  fontColor,
-  primaryColor,
   successColor,
 } from "../../constants/colors";
 
 export default function Root() {
   const fonts = {
-    bold: require("../../../assets/fonts/RobotoCondensed-Regular.ttf"),
-    boldItalic: require("../../../assets/fonts/RobotoCondensed-Italic.ttf"),
-    italic: require("../../../assets/fonts/RobotoCondensed-LightItalic.ttf"),
-    regular: require("../../../assets/fonts/RobotoCondensed-Light.ttf"),
+    "Roboto-Bold": require("../../../assets/fonts/RobotoCondensed-Regular.ttf"),
+    "Roboto-BoldItalic": require("../../../assets/fonts/RobotoCondensed-Italic.ttf"),
+    "Roboto-Italic": require("../../../assets/fonts/RobotoCondensed-LightItalic.ttf"),
+    "Roboto-Regular": require("../../../assets/fonts/RobotoCondensed-Light.ttf"),
   };
 
   const images = [require("../../../assets/images/test.png")];
 
   return (
     <AppContainer
-      apiUrl={apiUrl}
-      apiParamsSelector={(state) => ({
-        language: state?.settings?.language,
-      })}
-      colors={{
-        background: backgroundColor,
-        error: errorColor,
-        font: fontColor,
-        primary: primaryColor,
-        success: successColor,
+      api={{
+        baseUrl: apiUrl,
+        paramsSelector: (state) => ({
+          language: state?.settings?.language,
+        }),
       }}
-      fonts={fonts}
-      languages={{ en: English, sv: Swedish }}
-      languageSelector={(state) => state?.settings?.language}
-      images={images}
-      reducers={{ settings }}
+      language={{
+        en: English,
+        sv: Swedish,
+        selector: (state) => state?.settings?.language,
+      }}
+      load={{ fonts, images }}
+      reducers={{
+        whitelist: { settings },
+      }}
+      style={{
+        fonts: {
+          regular: "Roboto-Regular",
+          bold: "Roboto-Bold",
+        },
+        colors: {
+          background: backgroundColor,
+          error: errorColor,
+          success: successColor,
+        },
+      }}
     >
       <AppContextProvider>
         <Switch />

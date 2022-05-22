@@ -1,8 +1,8 @@
-import { FlatButton, Screen, Text } from "@ckbab/react-native-components";
 import { useLocalization } from "@ckbab/react-native-components/hooks";
 import React, { useLayoutEffect } from "react";
-import { StyleSheet } from "react-native";
+import { ScrollView, StyleSheet } from "react-native";
 import { useSelector } from "react-redux";
+import { FlatButton, Screen, Text } from "../shared";
 
 export default function Home({ navigation }) {
   const localization = useLocalization();
@@ -15,12 +15,20 @@ export default function Home({ navigation }) {
   }, [localization, navigation]);
 
   return (
-    <Screen navigation={navigation} contentContainerStyle={styles.content}>
-      <FlatButton
-        label={localization.translate("home.button")}
-        onPress={() => navigation.navigate("AppInfo")}
-      />
-      <Text>{language}</Text>
+    <Screen navigation={navigation}>
+      {({ backgroundColor, onScroll, paddingBottom }) => (
+        <ScrollView
+          style={{ backgroundColor }}
+          contentContainerStyle={[styles.content, { paddingBottom }]}
+          onScroll={onScroll}
+        >
+          <FlatButton
+            label={localization.translate("home.button")}
+            onPress={() => navigation.navigate("AppInfo")}
+          />
+          <Text>{language}</Text>
+        </ScrollView>
+      )}
     </Screen>
   );
 }
