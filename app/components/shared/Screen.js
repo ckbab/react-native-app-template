@@ -39,10 +39,11 @@ export default function Screen({ children, navigation }) {
       headerLeft: () => (
         <ToolbarButton icon="chevron-back" onPress={navigation.goBack} />
       ),
+      headerTitleAlign: "center",
+      headerTintColor: primaryColor,
       headerTitleStyle: {
         fontFamily: "Arsenal-Bold",
         fontSize: 20,
-        color: primaryColor,
       },
       headerStyle: {
         backgroundColor,

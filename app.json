@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Template",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "slug": "template-app",
     "privacy": "unlisted",
     "platforms": ["ios", "android"],
@@ -19,7 +19,8 @@
     },
     "updates": {
       "fallbackToCacheTimeout": 0,
-      "checkAutomatically": "ON_ERROR_RECOVERY"
+      "checkAutomatically": "ON_ERROR_RECOVERY",
+      "url": "https://u.expo.dev/a1c08d49-9e63-404b-b5b9-6c3afe3bfb36"
     },
     "assetBundlePatterns": ["**/*"],
     "android": {
